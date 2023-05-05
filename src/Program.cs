@@ -11,7 +11,7 @@ namespace Mister
             FFXI myClass = new FFXI();
             List<Process> processes = myClass.ReturnProcessList();
 
-            PrintInColor("white", "Select your Character:");
+            Console.WriteLine("Select your Character:");
             int count = 0;
             foreach (Process process in processes)
             {
@@ -26,23 +26,8 @@ namespace Mister
             int pol_process = processes.First(a => a.MainWindowTitle == response).Id;
             Console.WriteLine(pol_process);
             EliteAPI TheInstance  = new EliteAPI(pol_process);
-            Console.WriteLine(TheInstance.Player.GetPlayerInfo().MainJob);
+            Console.WriteLine(TheInstance.Player.GetPlayerInfo().Homepoint);
 
-        }
-
-
-        static void PrintInColor(string color, string message)
-        {
-            ConsoleColor consoleColor;
-
-            if (!Enum.TryParse(color, true, out consoleColor))
-            {
-                consoleColor = ConsoleColor.White;
-            }
-
-            Console.ForegroundColor = consoleColor;
-            Console.WriteLine(message);
-            Console.ResetColor();
         }
     }
 
