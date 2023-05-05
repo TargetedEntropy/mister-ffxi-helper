@@ -3,7 +3,7 @@ using EliteMMO.API;
 
 namespace Mister
 {
-   #region class: PlayerInfo
+    #region class: PlayerInfo
     public class PlayerInfo
     {
         EliteAPI api;
@@ -111,7 +111,8 @@ namespace Mister
             return retVal;
         }
     }
-    #endregion    
+    #endregion
+    #region class: TargetInfo
     public class TargetInfo
     {
         EliteAPI api;
@@ -195,7 +196,7 @@ namespace Mister
             return (float)(x2 > x1 ? angle + 128 : angle);
         }
     }
-
+    #endregion
     #region class: RecastInfo
     public class Recast
     {
@@ -364,7 +365,7 @@ namespace Mister
         }
     }
     #endregion
-    #region Movement
+    #region class: Movement
     public class Movement
     {
         EliteAPI api;

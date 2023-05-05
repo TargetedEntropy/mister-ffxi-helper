@@ -82,8 +82,11 @@ namespace Mister
             return null;
         }
 
-        public void OpenBoxes(EliteAPI api)
+        public void OpenBoxes()
         {
+            EliteAPI api = GetFFXIInstance();
+            if (api == null) return;
+            
             PlayerInfo PlayerInfo = new PlayerInfo(api);
             TargetInfo TargetInfo = new TargetInfo(api);
             Movement Movement = new Movement(api);
@@ -108,7 +111,7 @@ namespace Mister
                     else
                     {
                         Movement.Stop();
-                        api.ThirdParty.SendString("item \"Forbidden Key\" <t>");
+                        api.ThirdParty.SendString("/item \"Forbidden Key\" <t>");
                         if (!grayList.ContainsKey(Box(api).TargetID))
                             grayList.Add(Box(api).TargetID, DateTime.Now.AddSeconds(20));
                         else

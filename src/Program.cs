@@ -1,4 +1,5 @@
 ﻿using EliteMMO.API;
+using System.Threading;
 
 namespace Mister
 {
@@ -8,18 +9,24 @@ namespace Mister
 
         static void Main(string[] args)
         {
+            
             MainThread.Start();
         }
         
         static void MainThreadFunc() {
+
             FFXI misterFF = new FFXI();
-            EliteAPI api = misterFF.GetFFXIInstance();
+
             while (1 == 1)
             {
+                EliteAPI api = misterFF.GetFFXIInstance();
                 if (api == null) continue;
 
-                misterFF.OpenBoxes(api);
+                System.Threading.Thread.Sleep(500);
+
+                misterFF.OpenBoxes();
             }            
         }
+
    }
 }
