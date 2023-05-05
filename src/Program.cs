@@ -1,16 +1,25 @@
-﻿
-using System.Diagnostics;
-using EliteMMO.API;
+﻿using EliteMMO.API;
 
 namespace Mister
 {
     class Program
     {
+        static Thread MainThread = new Thread(() => MainThreadFunc());
+
         static void Main(string[] args)
         {
-            FFXI myClass = new FFXI();
+            MainThread.Start();
         }
-    }
+        
+        static void MainThreadFunc() {
+            FFXI misterFF = new FFXI();
+            EliteAPI api = misterFF.GetFFXIInstance();
+            while (1 == 1)
+            {
+                if (api == null) continue;
 
-
+                misterFF.OpenBoxes(api);
+            }            
+        }
+   }
 }
