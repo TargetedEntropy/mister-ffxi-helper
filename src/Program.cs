@@ -9,13 +9,6 @@ namespace Mister
         static void Main(string[] args)
         {
             FFXI myClass = new FFXI();
-          
-
-            // int pol_process = processes.First(a => a.MainWindowTitle == response).Id;
-
-            // EliteAPI TheInstance  = new EliteAPI(pol_process);
-            // Console.WriteLine(TheInstance.Player.GetPlayerInfo().Homepoint);
-
         }
     }
 
