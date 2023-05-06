@@ -15,6 +15,7 @@ namespace Mister
                 Console.WriteLine("Options:");
                 Console.WriteLine("   --boxes : Open Abyssea Chests");
                 Console.WriteLine("   --status : Give Character status updates");
+                Console.WriteLine("   --mandy : Play the Mandy Game");
                 Environment.Exit(0);
             }
 
@@ -30,7 +31,13 @@ namespace Mister
             {
                 Thread StatusThread = new Thread(() => StatusThreadFunc(misterFF));
                 StatusThread.Start();
-            }            
+            }
+
+            if (args.Contains("mandy"))
+            {
+                Mandy mandy = new Mandy();
+                Mandy.EnterMandyHell(misterFF.GetFFXIInstance());
+            }                        
 
         }
 
@@ -56,7 +63,8 @@ namespace Mister
 
                 Console.Clear();
 
-                Console.WriteLine((EliteMMO.API.EntityStatus)api.Player.Status);
+                Console.WriteLine($"Status: {(EliteMMO.API.EntityStatus)api.Player.Status}");
+                Console.WriteLine($"TargetID: {api.Target.GetTargetInfo().TargetId}");
 
                 System.Threading.Thread.Sleep(100);
                 
