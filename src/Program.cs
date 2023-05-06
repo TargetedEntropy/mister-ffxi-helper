@@ -35,8 +35,7 @@ namespace Mister
 
             if (args.Contains("mandy"))
             {
-                Mandy mandy = new Mandy();
-                Mandy.EnterMandyHell(misterFF.GetFFXIInstance());
+                Mandy mandy = new Mandy(misterFF.GetFFXIInstance());
             }                        
 
         }

@@ -5,8 +5,7 @@ namespace Mister
 {
     public class Mandy
     {   
-        static EliteAPI api;
-        static Mandy() 
+        public Mandy(EliteAPI api) 
         {
             EnterMandyHell(api);
         }
