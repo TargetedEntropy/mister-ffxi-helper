@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "8KPvLDMI4ClK/6B6hEud4TrgKyegEQr+UDPPQh9118IkiiLZV1qcLwwUvFL8BAhxReTMtUZgKjOD7JloQLiRSg==",
+  "dgSpecHash": "8JenKUHARPzad60zqf/aGZbnXYn5SLj8f1M8lPD5XlVR7e7axrWvLbeovaZrSJZ7Z2iZgSULWTNmcymI1k7AEw==",
   "success": true,
   "projectFilePath": "C:\\Users\\merri\\Desktop\\git\\mister-ffxi-helper\\src\\mister-ffxi-helper.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\merri\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\merri\\.nuget\\packages\\system.text.encoding.codepages\\7.0.0\\system.text.encoding.codepages.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

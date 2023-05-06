@@ -62,10 +62,17 @@ namespace Mister
 
                 Console.Clear();
 
+                System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
                 Console.WriteLine($"Status: {(EliteMMO.API.EntityStatus)api.Player.Status}");
                 Console.WriteLine($"TargetID: {api.Target.GetTargetInfo().TargetId}");
+                Console.WriteLine($"ZoneID: {api.Player.ZoneId}");
+
+
+                Console.WriteLine("----------------");
+
 
                 System.Threading.Thread.Sleep(100);
+
                 
             }
         }
