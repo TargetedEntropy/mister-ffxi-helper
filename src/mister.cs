@@ -35,7 +35,7 @@ namespace Mister
             {
                 Console.WriteLine($"    {process.MainWindowTitle}");
             }
-            Console.WriteLine("Name:");
+            Console.Write("Name: ");
             string response = Console.ReadLine();
             if (response == "")
                 Environment.Exit(0);
