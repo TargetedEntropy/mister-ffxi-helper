@@ -22,7 +22,8 @@ namespace Mister
             }
 
             FFXI misterFF = new FFXI();
-
+            EliteAPI api = misterFF.GetFFXIInstance();
+            
             if (args.Contains("boxes"))
             {
                 Thread BoxThread = new Thread(() => BoxThreadFunc(misterFF));
@@ -31,13 +32,13 @@ namespace Mister
 
             if (args.Contains("status"))
             {
-                Thread StatusThread = new Thread(() => StatusThreadFunc(misterFF));
+                Thread StatusThread = new Thread(() => StatusThreadFunc(api));
                 StatusThread.Start();
             }
 
             if (args.Contains("storage"))
             {
-                Thread StorageThread = new Thread(() => StorageThreadFunc(misterFF));
+                Thread StorageThread = new Thread(() => StorageThreadFunc(api));
                 StorageThread.Start();
             }
 
@@ -61,24 +62,21 @@ namespace Mister
             }
         }
 
-        static void StorageThreadFunc(Mister.FFXI misterFF)
+        static void StorageThreadFunc(EliteAPI api)
         {
             while (1 == 1)
             {
-                EliteAPI api = misterFF.GetFFXIInstance();
                 if (api == null) continue;
 
                 System.Threading.Thread.Sleep(500);
-
-                misterFF.OpenBoxes();
+                Storage storage = new Storage(api);
             }
         }        
 
-        static void StatusThreadFunc(Mister.FFXI misterFF)
+        static void StatusThreadFunc(EliteAPI api)
         {
-            while (1 == 1)
-            {
-                EliteAPI api = misterFF.GetFFXIInstance();
+            while (1 == 1) {
+
                 if (api == null) continue;
 
                 Console.Clear();
