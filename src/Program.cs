@@ -66,8 +66,6 @@ namespace Mister
                 Console.WriteLine($"Status: {(EliteMMO.API.EntityStatus)api.Player.Status}");
                 Console.WriteLine($"TargetID: {api.Target.GetTargetInfo().TargetId}");
                 Console.WriteLine($"ZoneID: {api.Player.ZoneId}");
-
-
                 Console.WriteLine("----------------");
 
 
