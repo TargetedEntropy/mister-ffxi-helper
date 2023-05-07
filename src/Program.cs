@@ -15,7 +15,9 @@ namespace Mister
                 Console.WriteLine("Options:");
                 Console.WriteLine("   --boxes : Open Abyssea Chests");
                 Console.WriteLine("   --status : Give Character status updates");
-                Console.WriteLine("   --mandy : Play the Mandy Game");
+                Console.WriteLine("   --mandy : Play the Mandy Game - WorkInProgress");
+                Console.WriteLine("   --storage : Dump Storage");
+
                 Environment.Exit(0);
             }
 
@@ -31,6 +33,12 @@ namespace Mister
             {
                 Thread StatusThread = new Thread(() => StatusThreadFunc(misterFF));
                 StatusThread.Start();
+            }
+
+            if (args.Contains("storage"))
+            {
+                Thread StorageThread = new Thread(() => StorageThreadFunc(misterFF));
+                StorageThread.Start();
             }
 
             if (args.Contains("mandy"))
@@ -52,6 +60,19 @@ namespace Mister
                 misterFF.OpenBoxes();
             }
         }
+
+        static void StorageThreadFunc(Mister.FFXI misterFF)
+        {
+            while (1 == 1)
+            {
+                EliteAPI api = misterFF.GetFFXIInstance();
+                if (api == null) continue;
+
+                System.Threading.Thread.Sleep(500);
+
+                misterFF.OpenBoxes();
+            }
+        }        
 
         static void StatusThreadFunc(Mister.FFXI misterFF)
         {

@@ -7,9 +7,10 @@ When running the program, you will be prompted to selecte a character.  After th
 Currently the bot will open Blue and Red Abyssea chests for you.
 
 ## CLI Options
-* `--boxes`  This will open Abbysea blue / red boxes
-* `--status` This will display Character status in the terminal
-* `--mandy` This will display Character status in the terminal - WIP
+* `--boxes`  Open Blue & Red Abbysea chests
+* `--status` Display Character status in the terminal
+* `--storage` Dump contents of all storage
+* `--mandy` Play the Mandy Game - WorkInProgress
 * `--help` displays available options.
 
 
