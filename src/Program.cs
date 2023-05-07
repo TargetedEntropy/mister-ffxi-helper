@@ -64,13 +64,13 @@ namespace Mister
 
         static void StorageThreadFunc(EliteAPI api)
         {
-            while (1 == 1)
-            {
-                if (api == null) continue;
+            // while (1 == 1)
+            // {
+                if (api == null) return;
 
                 System.Threading.Thread.Sleep(500);
                 Storage storage = new Storage(api);
-            }
+            // }
         }        
 
         static void StatusThreadFunc(EliteAPI api)
