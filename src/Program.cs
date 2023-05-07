@@ -23,8 +23,8 @@ namespace Mister
 
             if (args.Contains("boxes"))
             {
-                Thread MainThread = new Thread(() => MainThreadFunc(misterFF));
-                MainThread.Start();
+                Thread BoxThread = new Thread(() => BoxThreadFunc(misterFF));
+                BoxThread.Start();
             }
 
             if (args.Contains("status"))
@@ -40,7 +40,7 @@ namespace Mister
 
         }
 
-        static void MainThreadFunc(Mister.FFXI misterFF)
+        static void BoxThreadFunc(Mister.FFXI misterFF)
         {
             while (1 == 1)
             {
