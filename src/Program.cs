@@ -4,13 +4,13 @@ namespace Mister
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             for (int i = 0; i < args.Length; i++)
             {
                 args[i] = args[i].Replace("--", "");
             }
-            if (args.Contains("help"))
+            if (args.Contains("help") || args.Length == 0)
             {
                 Console.WriteLine("Options:");
                 Console.WriteLine("   --boxes : Open Abyssea Chests");
@@ -38,8 +38,8 @@ namespace Mister
 
             if (args.Contains("storage"))
             {
-                Thread StorageThread = new Thread(() => StorageThreadFunc(api));
-                StorageThread.Start();
+                Storage storage = new Storage();
+                await storage.Run(api);
             }
 
             if (args.Contains("mandy"))
@@ -62,16 +62,16 @@ namespace Mister
             }
         }
 
-        static void StorageThreadFunc(EliteAPI api)
-        {
-            // while (1 == 1)
-            // {
-                if (api == null) return;
+        // static void StorageThreadFunc(EliteAPI api)
+        // {
+        //     // while (1 == 1)
+        //     // {
+        //         if (api == null) return;
 
-                System.Threading.Thread.Sleep(500);
-                Storage storage = new Storage(api);
-            // }
-        }        
+        //         System.Threading.Thread.Sleep(500);
+        //         Storage storage = new Storage(api);
+        //     // }
+        // }        
 
         static void StatusThreadFunc(EliteAPI api)
         {
