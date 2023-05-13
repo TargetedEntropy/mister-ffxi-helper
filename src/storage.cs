@@ -38,7 +38,7 @@ namespace Mister
                     for (int i = 1; i <= item_count; i++)
                     {
                         EliteAPI.InventoryItem item = api.Inventory.GetContainerItem(container, i);
-                        Console.WriteLine($"Container: {(StorageContainer)container} ItemId: {item.Id} Amount: {item.Count}");
+
                         string character_name = api.Player.Name;
                         string url = "";
 
