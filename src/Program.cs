@@ -51,14 +51,16 @@ namespace Mister
 
         static void BoxThreadFunc(Mister.FFXI misterFF)
         {
+            // Breathe first
+            System.Threading.Thread.Sleep(500);
+
             while (1 == 1)
             {
                 EliteAPI api = misterFF.GetFFXIInstance();
                 if (api == null) continue;
 
-                System.Threading.Thread.Sleep(500);
-
                 misterFF.OpenBoxes();
+                System.Threading.Thread.Sleep(500);
             }
         }
 
@@ -74,8 +76,9 @@ namespace Mister
                 System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
                 Console.WriteLine($"Status: {(EliteMMO.API.EntityStatus)api.Player.Status}");
                 Console.WriteLine($"TargetID: {api.Target.GetTargetInfo().TargetId}");
-                Console.WriteLine($"ZoneID: {api.Player.ZoneId}");
+                Console.WriteLine($"Zone: {(Zone)api.Player.ZoneId}");
                 Console.WriteLine("----------------");
+
 
                 System.Threading.Thread.Sleep(100);
 
