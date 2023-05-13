@@ -86,7 +86,7 @@ namespace Mister
         {
             EliteAPI api = GetFFXIInstance();
             if (api == null) return;
-            
+
             PlayerInfo PlayerInfo = new PlayerInfo(api);
             TargetInfo TargetInfo = new TargetInfo(api);
             Movement Movement = new Movement(api);
