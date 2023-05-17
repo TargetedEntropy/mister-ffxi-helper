@@ -20,9 +20,15 @@ namespace Mister
 
                 Environment.Exit(0);
             }
+            bool use_all = false;
+            if (args.Contains("all"))
+            {
+                use_all = true;
+            }
 
-            FFXI misterFF = new FFXI();
+            FFXI misterFF = new FFXI(use_all);
             EliteAPI api = misterFF.GetFFXIInstance();
+           
 
             if (args.Contains("boxes"))
             {
@@ -36,6 +42,12 @@ namespace Mister
                 StatusThread.Start();
             }
 
+            if (args.Contains("profiles"))
+            {
+                Thread ProfileThread = new Thread(() => ProfileThreadFunc(misterFF));
+                ProfileThread.Start();
+            }            
+
             if (args.Contains("storage"))
             {
                 Storage storage = new Storage();
@@ -48,6 +60,36 @@ namespace Mister
             }
 
         }
+
+        static void ProfileThreadFunc(Mister.FFXI misterFF)
+        {
+            // Breathe first
+            System.Threading.Thread.Sleep(500);
+
+            List<EliteAPI> EliteApiInstances =  misterFF.GetEliteApiInstances();
+
+            while (1 == 1)
+            {
+                bool bad = false;
+                foreach (EliteAPI api in EliteApiInstances) {
+                    if (api == null) {
+                        misterFF.RemoveInstanceFromList(api);
+                        bad = true;
+                    }
+
+                    Console.WriteLine($"{api.Player.}");
+                }
+                if (bad) {
+                    continue;
+                }
+                //EliteAPI api = misterFF.GetFFXIInstance();
+                
+                Console.WriteLine("LOOP");
+
+                System.Threading.Thread.Sleep(500);
+            }
+        }
+
 
         static void BoxThreadFunc(Mister.FFXI misterFF)
         {
