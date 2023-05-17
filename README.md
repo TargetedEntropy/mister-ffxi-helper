@@ -9,8 +9,9 @@ Currently the bot will open Blue and Red Abyssea chests for you.
 ## CLI Options
 * `--boxes`  Open Blue & Red Abbysea chests
 * `--status` Display Character status in the terminal
-* `--storage` Dump contents of all storage
+* `--storage` Dump contents of all storage - WorkInProgress
 * `--mandy` Play the Mandy Game - WorkInProgress
+* `--profiles` Dump profiles of all running instances - WorkInProgress
 * `--help` displays available options.
 
 

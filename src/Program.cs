@@ -42,7 +42,7 @@ namespace Mister
                 StatusThread.Start();
             }
 
-            if (args.Contains("info"))
+            if (args.Contains("profiles"))
             {
                 Thread ProfileThread = new Thread(() => ProfileThreadFunc(misterFF));
                 ProfileThread.Start();
