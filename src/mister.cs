@@ -6,29 +6,57 @@ namespace Mister
     public class FFXI
     {
         public static List<Process> matchingProcesses = new List<Process>();
-        private static string CharacterName;
-        public static EliteAPI POL_Instance;
+        private static string? CharacterName;
+        public static EliteAPI? POL_Instance;
         static Dictionary<uint, DateTime> grayList = new Dictionary<uint, DateTime>();
         static string pyxis = "";
 
-        static FFXI()
+        public static List<EliteAPI> EliteApiInstances = new List<EliteAPI>();
+
+
+        public FFXI(bool use_all)
         {
+
             matchingProcesses = GetProcessesByName("pol");
-            CharacterName = SelectCharacter();
-            POL_Instance = CreateInstance(CharacterName);
+            if (use_all)
+            {
+                Console.WriteLine("Using All POL Instances");
+                foreach (Process proc in matchingProcesses ) {
+                    EliteApiInstances.Add(CreateInstanceByPid(proc));
+                }
+            }
+            else
+            {
+                CharacterName = SelectCharacter();
+                POL_Instance = CreateInstanceByCharacterName(CharacterName);
+            }
         }
-        public EliteAPI GetFFXIInstance()
+        public EliteAPI? GetFFXIInstance()
         {
             return POL_Instance;
         }
 
-        private static EliteAPI CreateInstance(string CharacterName)
+        public void RemoveInstanceFromList(EliteAPI EliteApiInstance) {
+                EliteApiInstances.Remove(EliteApiInstance);
+        }
+        public List<EliteAPI>? GetEliteApiInstances()
+        {
+            return EliteApiInstances;
+        }
+
+        private static EliteAPI CreateInstanceByCharacterName(string CharacterName)
         {
             int pol_process = matchingProcesses.First(a => a.MainWindowTitle == CharacterName).Id;
             return new EliteAPI(pol_process);
         }
 
-        private static string SelectCharacter()
+        private static EliteAPI CreateInstanceByPid(Process polProcess)
+        {
+            return new EliteAPI(polProcess.Id);
+        }
+
+
+        private static string? SelectCharacter()
         {
             Console.WriteLine("Select your Character:");
             foreach (Process process in matchingProcesses)
